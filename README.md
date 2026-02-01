@@ -28,7 +28,7 @@ Unlike standard random generators, Frostward uses **Triple-Layer Noise Abstracti
 * **📋 Survivor Log Reviewer:** A new centralized log interface allows you to view all notes made across the infinite map in one chronological list, making it easier to track discovered resources.
 * **🔑 Custom Seed Injection:** Players can now manually input and "Load" specific world seeds, allowing for shared world exploration and speed-running.
 * **⚙️ Unified System Menu:** A clean modal-based UI replaces the old action bar, housing world-reset, trekking, and log-management tools.
-* **Zero-Dependency Architecture:** A "Digital Talisman"—one single HTML file containing all Logic (JS), Styling (CSS), and Structure (HTML).
+* **💯Zero-Dependency Architecture:** A "Digital Talisman"—one single HTML file containing all Logic (JS), Styling (CSS), and Structure (HTML).
 
 ---
 
