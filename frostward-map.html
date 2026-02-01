@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Frostward: Infinite Survival Map</title>
+<title>Frostward: Infinite Survival</title>
 <style>
     :root {
         /* --- THEME: GLACIAL APOCALYPSE --- */
@@ -96,9 +96,9 @@
         grid-template-columns: repeat(11, 1fr); 
         grid-template-rows: repeat(11, 1fr);
         width: 100%;
-        max-width: 500px;
+        max-width: 500px; 
         aspect-ratio: 1/1;
-        gap: 1px; /* Slight gap for tactical grid feel */
+        gap: 1px; 
         background: #000;
     }
 
@@ -145,7 +145,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 12px;
+        gap: 15px;
         background: var(--panel);
         border-top: 1px solid var(--border);
         flex-shrink: 0;
@@ -172,37 +172,41 @@
         color: #000; 
         transform: translateY(2px);
     }
+
+    .settings-btn {
+        width: 100%;
+        max-width: 200px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        background: #131b26;
+        border: 1px solid #34495e;
+    }
     
-    .action-bar { display: flex; gap: 10px; width: 100%; justify-content: center; }
-    .btn-sm { 
-        font-size: 11px; 
-        padding: 12px 15px; 
-        text-transform: uppercase; 
-        font-weight: bold; 
-        letter-spacing: 0.5px;
-        flex: 1;
-        max-width: 160px;
-        background: #233142;
-    }
-    .btn-red { border-bottom: 2px solid var(--danger); }
-    .btn-blue { border-bottom: 2px solid var(--cold); }
-
     .footer-info {
-        font-size: 10px; color: #455a64; font-family: monospace; margin-top: 5px; text-align: center;
+        font-size: 10px; color: #455a64; font-family: monospace; text-align: center;
     }
 
-    /* --- LOG MODAL --- */
-    #notebook-modal {
-        position: absolute; bottom: 0; left: 0; right: 0; height: 50%;
+    /* --- MODALS --- */
+    .modal {
+        position: absolute; bottom: 0; left: 0; right: 0; 
         background: #0f1621; border-top: 2px solid var(--cold); padding: 20px;
-        transform: translateY(100%); 
+        transform: translateY(110%); 
         transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         display: flex; flex-direction: column; z-index: 100; 
         box-shadow: 0 -20px 50px rgba(0,0,0,0.9);
+        max-height: 80%;
     }
-    #notebook-modal.active { transform: translateY(0); }
+    .modal.active { transform: translateY(0); }
 
-    .modal-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; }
+    /* Notebook Specifics */
+    #notebook-modal { height: 50%; }
+    .modal-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; flex-shrink: 0; }
     .note-title { font-weight: bold; color: var(--cold); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; }
     .note-desc { font-style: italic; color: #687d8d; font-size: 0.85em; margin-top: 4px; }
     
@@ -213,8 +217,41 @@
     }
     textarea:focus { border-color: var(--cold); }
     
-    .save-btn { background: var(--heat); color: #fff; font-weight: bold; border: none; padding: 15px; border-radius: 4px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; }
+    .primary-btn { background: var(--heat); color: #fff; font-weight: bold; border: none; padding: 15px; border-radius: 4px; cursor: pointer; text-transform: uppercase; letter-spacing: 1px; width: 100%; }
     .close-btn { background: none; border: 1px solid #455a64; font-size: 10px; padding: 4px 10px; color: #455a64; border-radius: 4px; cursor: pointer; }
+
+    /* Settings Specifics */
+    #settings-modal { height: auto; padding-bottom: 20px; }
+    .settings-section { margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 15px; }
+    .settings-label { font-size: 0.75rem; color: #566b78; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: bold;}
+    
+    .seed-row { display: flex; gap: 10px; margin-bottom: 10px; }
+    #custom-seed-input {
+        flex: 1; background: #050a10; border: 1px solid var(--border); color: var(--heat); 
+        font-family: monospace; padding: 10px; font-size: 1.1rem; border-radius: 4px;
+    }
+    
+    .action-row { display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap;}
+    .btn-sm { 
+        font-size: 11px; padding: 12px 5px; text-transform: uppercase; font-weight: bold; 
+        letter-spacing: 0.5px; flex: 1; background: #233142; color: #aabbc9;
+        min-width: 120px;
+    }
+    .btn-red { border-bottom: 2px solid var(--danger); }
+    .btn-blue { border-bottom: 2px solid var(--cold); }
+    .btn-green { border-bottom: 2px solid #2ecc71; color: #fff;}
+    .btn-gold { border-bottom: 2px solid #f1c40f; color: #fff; }
+
+    .credits { margin-top: 10px; font-size: 10px; color: #455a64; text-align: center; font-family: monospace; }
+
+    /* Log List Specifics */
+    #logs-modal { height: 60%; }
+    .log-list { overflow-y: auto; flex-grow: 1; border: 1px solid var(--border); background: #000; border-radius: 4px; }
+    .log-item { padding: 12px; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+    .log-item:last-child { border-bottom: none; }
+    .log-coords { font-family: monospace; color: var(--heat); font-weight: bold; font-size: 0.8rem; display: block; margin-bottom: 4px; }
+    .log-text { color: #ccc; font-style: italic; white-space: pre-wrap; }
+    .empty-logs { padding: 20px; text-align: center; color: #455a64; font-style: italic; }
 
 </style>
 </head>
@@ -244,18 +281,18 @@
             <button onclick="move(1, 0)">▶</button>
             <div></div><button onclick="move(0, 1)">▼</button><div></div>
         </div>
-        <div class="action-bar">
-            <button class="btn-sm btn-blue" onclick="teleport()">❄️ Blizzard Trek</button>
-            <button class="btn-sm btn-red" onclick="reincarnate()">☢️ New Expedition</button>
-        </div>
+        
+        <button class="settings-btn" onclick="toggleSettings()">
+            <span>⚙️ System</span>
+        </button>
+
         <div class="footer-info">
-            <span id="seed-display">Seed: 000000</span><br>
-            Made by Satoru Suzuki
+            <span id="seed-display">Seed: 000000</span>
         </div>
     </div>
 </div>
 
-<div id="notebook-modal">
+<div id="notebook-modal" class="modal">
     <div class="modal-header">
         <div>
             <div class="note-title" id="note-title">Location</div>
@@ -264,7 +301,50 @@
         <button class="close-btn" onclick="closeNotebook()">CLOSE</button>
     </div>
     <textarea id="note-input" placeholder="Log supplies or threats found here..."></textarea>
-    <button class="save-btn" onclick="saveNote()">UPDATE LOG</button>
+    <button class="primary-btn" onclick="saveNote()">UPDATE LOG</button>
+</div>
+
+<div id="logs-modal" class="modal">
+    <div class="modal-header">
+        <div class="note-title">SURVIVOR LOGS</div>
+        <button class="close-btn" onclick="closeLogs()">CLOSE</button>
+    </div>
+    <div class="log-list" id="log-list-container">
+        </div>
+</div>
+
+<div id="settings-modal" class="modal">
+    <div class="modal-header">
+        <div class="note-title" style="color:#fff;">SYSTEM MENU</div>
+        <button class="close-btn" onclick="toggleSettings()">CLOSE</button>
+    </div>
+
+    <div class="settings-section">
+        <div class="settings-label">Progress</div>
+        <div class="action-row">
+            <button class="btn-sm btn-green" id="manual-save-btn" onclick="manualSave()">💾 Save Progress</button>
+            <button class="btn-sm btn-gold" onclick="openLogs()">📜 Review Logs</button>
+        </div>
+    </div>
+
+    <div class="settings-section">
+        <div class="settings-label">World Seed Protocol</div>
+        <div class="seed-row">
+            <input type="number" id="custom-seed-input" placeholder="Enter Seed">
+            <button class="btn-sm" style="flex: 0 0 80px; border-bottom: 2px solid var(--heat);" onclick="applyCustomSeed()">LOAD</button>
+        </div>
+        <div style="font-size: 10px; color: #566b78;">Enter custom number to generate world.</div>
+    </div>
+
+    <div class="settings-section" style="border:none; padding-bottom: 0;">
+        <div class="settings-label">Actions</div>
+        <div class="action-row">
+            <button class="btn-sm btn-blue" onclick="teleport()">❄️ Blizzard Trek</button>
+            <button class="btn-sm btn-red" onclick="reincarnate()">☢️ New Expedition</button>
+        </div>
+    </div>
+
+    <div class="credits">Made by Satoru Suzuki</div>
 </div>
 
 <script>
@@ -273,6 +353,32 @@
     
     // Player State
     const S = { x: 0, y: 0, ledger: {} };
+
+    // SAVE SYSTEM: LOAD
+    function loadGame() {
+        try {
+            const raw = localStorage.getItem('frostward_save');
+            if (raw) {
+                const data = JSON.parse(raw);
+                SEED = data.seed || SEED;
+                S.x = data.x || 0;
+                S.y = data.y || 0;
+                S.ledger = data.ledger || {};
+                console.log("Save loaded.");
+            }
+        } catch (e) { console.error("Save Corrupt", e); }
+    }
+
+    // SAVE SYSTEM: MANUAL SAVE
+    function manualSave() {
+        const data = { seed: SEED, x: S.x, y: S.y, ledger: S.ledger };
+        localStorage.setItem('frostward_save', JSON.stringify(data));
+        
+        const btn = document.getElementById('manual-save-btn');
+        const origText = btn.innerHTML;
+        btn.innerHTML = "✅ SAVED!";
+        setTimeout(() => btn.innerHTML = origText, 1500);
+    }
 
     // Pseudorandom Hash
     function hash(x, y) {
@@ -312,17 +418,13 @@
 
     // --- 2. SURVIVAL WORLD LOGIC ---
     
-    // e = Elevation | s = Snow/Storm Severity | c = Cold Intensity (Low = Heat Source)
-    
     function getSettlement(x, y, e, c) {
         let h = hash(x, y);
         
-        // FURNACE CITY (The "Sect" Equivalent) - Needs Heat (Low C)
         if (h > 0.985 && c < 0.35 && e > 0.4) {
             return { type: 'Furnace', name: 'Furnace City', icon: '🏭', desc: 'A massive heat-core city. Safe haven.' };
         }
 
-        // ICEBREAKER DOCK (The "Port" Equivalent) - Coastal
         if (h > 0.98 && e >= 0.35 && e < 0.38) {
             const scale = 0.08;
             let n1 = fbm((x+1)*scale, y*scale, 4);
@@ -335,7 +437,6 @@
             }
         }
 
-        // Standard Spawns
         if (h > 0.993) return { type: 'Ruins', name: 'Ruined Metropolis', icon: '🏙️', desc: 'Old world skyscrapers buried in ice. High Loot.' };
         if (h > 0.970) return { type: 'Outpost', name: 'Military Bunker', icon: '🏰', desc: 'Reinforced concrete shelter.' };
         if (h > 0.950) return { type: 'Factory', name: 'Frozen Factory', icon: '🏭', desc: 'Abandoned machinery and scrap.' };
@@ -347,15 +448,12 @@
     }
 
     function getTileData(x, y) {
-        // TWEAK: Scale 0.08 for "1km per tile" zoom (Closer than Xianxia)
         const scale = 0.08; 
         
-        // 1. LAYERS
-        let e = fbm(x * scale, y * scale, 4);          // Elevation
-        let s = fbm(x * scale + 500, y * scale + 500, 2); // Snow/Storm (Moisture)
-        let c = fbm(x * 0.02 - 100, y * 0.02 - 100, 2);   // Cold Intensity (Qi)
+        let e = fbm(x * scale, y * scale, 4);
+        let s = fbm(x * scale + 500, y * scale + 500, 2); 
+        let c = fbm(x * 0.02 - 100, y * 0.02 - 100, 2);   
 
-        // 2. DEFAULT: SNOW PLAINS
         let data = { 
             color: 'var(--c-snow)', 
             name: 'Snow Plains', 
@@ -365,16 +463,13 @@
             cssClass: ''
         };
 
-        // --- WATER / ICE ---
         if (e < 0.22) {
             data.color = 'var(--c-void)'; data.name = 'Deep Freeze'; data.desc = 'Unstable thin ice over abyss.'; data.temp = '-60°C';
         } else if (e < 0.35) {
             data.color = 'var(--c-water)'; data.name = 'Frozen Ocean'; data.desc = 'Solid ice sheet.'; data.temp = '-45°C';
         } 
         
-        // --- MOUNTAINS ---
         else if (e > 0.82) {
-            // GEOTHERMAL PEAK (Replaces Volcano) - Heat Source!
             if (c < 0.25) {
                 data.color = 'var(--c-magma)'; data.name = 'Active Core'; data.icon = '🌋'; data.desc = 'Geothermal heat vents. Rare warmth.'; data.temp = '+10°C';
             } else {
@@ -384,37 +479,30 @@
             data.color = 'var(--c-mtn)'; data.name = 'Iron Mountains'; data.icon = '⛰️'; data.desc = 'Rock exposed by fierce winds.'; data.temp = '-35°C';
         }
         
-        // --- LAND BIOMES ---
         else {
-            // ICE WASTES (Low Snow, High Cold)
             if (s < 0.25) {
                 data.color = 'var(--c-ice)'; data.name = 'Sheet Ice'; data.desc = 'Slippery, hard-packed blue ice.'; data.temp = '-30°C';
             }
-            // FORESTS (Mid Snow)
             else if (s > 0.60) {
-                // FROZEN FOREST (High Cold = Dead)
                 if (c > 0.65) {
                     data.color = 'var(--c-forest)'; data.name = 'Deadwood Forest'; data.desc = 'Petrified trees, good for lumber.'; data.icon='🪵'; data.temp = '-25°C';
                 } else {
-                    // PINE GROVE (Low Cold = Life)
                     data.color = '#1e3a2f'; data.name = 'Pine Grove'; data.desc = 'Living trees sheltering from wind.'; data.icon='🌲'; data.temp = '-15°C';
                 }
             }
-            // WHITEOUT ZONES (Extreme Snow)
             else if (s > 0.8) {
                 data.color = '#ffffff'; data.name = 'Whiteout Zone'; data.desc = 'Zero visibility blizzard.'; data.temp = '-50°C';
             }
             
-            // --- SETTLEMENTS ---
             let settlement = getSettlement(x, y, e, c);
             if (settlement) {
                 data.icon = settlement.icon; 
                 data.name = settlement.name; 
                 data.desc = settlement.desc;
-                data.temp = '-10°C'; // Settlements are slightly warmer
+                data.temp = '-10°C'; 
                 if (settlement.type === 'Furnace') {
-                    data.color = '#2c1e1e'; // Dark bg for furnace pop
-                    data.temp = '+20°C';    // Furnace is hot
+                    data.color = '#2c1e1e'; 
+                    data.temp = '+20°C';    
                 }
                 if (settlement.isPort) data.color = 'var(--c-coast)';
             }
@@ -455,42 +543,104 @@
         coordsEl.innerText = `${S.x}, ${S.y}`;
         biomeEl.innerText = currentTile.name;
         tempEl.innerText = currentTile.temp;
-        
-        // Dynamic Text Color based on temp
         tempEl.style.color = currentTile.temp.includes('+') ? 'var(--heat)' : '#fff';
+        
+        seedEl.innerText = `Seed: ${SEED}`;
     }
 
     // --- 4. CONTROLS ---
-    const modal = document.getElementById('notebook-modal');
+    const noteModal = document.getElementById('notebook-modal');
+    const settingsModal = document.getElementById('settings-modal');
+    const logsModal = document.getElementById('logs-modal');
 
     function move(dx, dy) {
-        if(modal.classList.contains('active')) return;
+        if(isModalOpen()) return;
         S.x += dx;
         S.y += dy;
         renderMap();
     }
 
     function zoom() {
-        if(modal.classList.contains('active')) return;
+        if(isModalOpen()) return;
         openNotebook(S.x, S.y, getTileData(S.x, S.y));
+    }
+
+    function isModalOpen() {
+        return noteModal.classList.contains('active') || 
+               settingsModal.classList.contains('active') ||
+               logsModal.classList.contains('active');
+    }
+
+    function toggleSettings() {
+        if (settingsModal.classList.contains('active')) {
+            settingsModal.classList.remove('active');
+        } else {
+            noteModal.classList.remove('active');
+            logsModal.classList.remove('active');
+            document.getElementById('custom-seed-input').value = SEED;
+            settingsModal.classList.add('active');
+        }
+    }
+
+    // --- LOGS FUNCTIONALITY ---
+    function openLogs() {
+        settingsModal.classList.remove('active'); // Close settings
+        const container = document.getElementById('log-list-container');
+        container.innerHTML = '';
+        
+        const entries = Object.entries(S.ledger);
+        
+        if (entries.length === 0) {
+            container.innerHTML = '<div class="empty-logs">No logs recorded yet.<br>Use the lantern 🔦 to leave notes on tiles.</div>';
+        } else {
+            entries.forEach(([key, val]) => {
+                const coords = key.split(',');
+                const div = document.createElement('div');
+                div.className = 'log-item';
+                div.innerHTML = `
+                    <span class="log-coords">COORDS: ${coords[0]}, ${coords[1]}</span>
+                    <span class="log-text">${val.replace(/</g, "&lt;")}</span>
+                `;
+                container.appendChild(div);
+            });
+        }
+        logsModal.classList.add('active');
+    }
+
+    function closeLogs() {
+        logsModal.classList.remove('active');
+        settingsModal.classList.add('active'); // Return to settings
+    }
+
+    function applyCustomSeed() {
+        const input = document.getElementById('custom-seed-input').value;
+        if(input) {
+            if(confirm("Changing the seed will generate a new world and reset your location. Continue?")) {
+                SEED = parseInt(input);
+                S.x = 0; S.y = 0; S.ledger = {}; // Reset for new world
+                renderMap();
+                toggleSettings();
+            }
+        }
     }
 
     function teleport() {
         S.x += Math.floor((Math.random() - 0.5) * 2000);
         S.y += Math.floor((Math.random() - 0.5) * 2000);
         renderMap();
+        toggleSettings();
     }
 
     function reincarnate() {
-        if(confirm("Start a new expedition on a new map seed? Current progress will be lost.")) {
+        if(confirm("Start a new expedition on a random map seed? Current progress will be lost.")) {
             SEED = Math.floor(Math.random() * 899999) + 100000;
-            seedEl.innerText = `Seed: ${SEED}`;
             S.x = 0; S.y = 0; S.ledger = {};
             renderMap();
+            toggleSettings();
         }
     }
 
-    // --- 5. LOG SYSTEM ---
+    // --- 5. NOTEBOOK SYSTEM ---
     const nTitle = document.getElementById('note-title');
     const nDesc = document.getElementById('note-desc');
     const nInput = document.getElementById('note-input');
@@ -501,7 +651,7 @@
         nTitle.innerText = `${data.icon || ''} ${data.name}`;
         nDesc.innerText = `${data.desc} (${data.temp})`;
         nInput.value = S.ledger[`${x},${y}`] || "";
-        modal.classList.add('active');
+        noteModal.classList.add('active');
     }
 
     function saveNote() {
@@ -514,16 +664,16 @@
     }
 
     function closeNotebook() {
-        modal.classList.remove('active');
+        noteModal.classList.remove('active');
         nInput.blur();
     }
 
     // --- INIT ---
-    seedEl.innerText = `Seed: ${SEED}`;
+    loadGame(); // Load only on startup
     renderMap();
 
     document.addEventListener('keydown', (e) => {
-        if (modal.classList.contains('active')) return;
+        if (isModalOpen()) return;
         const k = e.key.toLowerCase();
         if (k === 'arrowup' || k === 'w') move(0, -1);
         if (k === 'arrowdown' || k === 's') move(0, 1);
