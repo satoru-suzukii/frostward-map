@@ -8,7 +8,7 @@ Inspired by survival strategy titles like *Whiteout Survival*, this tool provide
 
 ---
 
-## 🛠 The Survival Logic
+## 🧊 The Glacier Logic
 
 Unlike standard random generators, Frostward uses **Triple-Layer Noise Abstraction** to determine the environment:
 
