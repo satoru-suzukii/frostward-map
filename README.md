@@ -49,6 +49,7 @@ Unlike standard random generators, Frostward uses **Triple-Layer Noise Abstracti
 | 🏭 | **Furnace City** | Human bastion with a heat core. | Low Cold + Mid Elevation |
 | 🌋 | **Active Core** | Rare geothermal heat vents. | High Elevation + Low Cold |
 | 🏙️ | **Ruined Metropolis** | Buried skyscrapers of the old world. | Rare Spawn (High Loot) |
+| 🌲 | **Pine Groves** | Living Trees sheltering from wind. | High Moisture + Low Cold |
 | 🪵 | **Deadwood Forest** | Frozen trees used for lumber. | High Moisture + High Cold |
 | 🧊 | **Deep Freeze** | Treacherous, thin abyssal ice. | Minimum Elevation ($e < 0.22$) |
 | ⛺ | **Survivor Camp** | Common clusters of tents. | Frequent Spawn ($h > 0.88$) |
