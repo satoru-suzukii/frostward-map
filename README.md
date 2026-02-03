@@ -20,13 +20,13 @@ Unlike standard random generators, Frostward uses **Triple-Layer Noise Abstracti
 
 ## ✨ Key Features 
 
-* **🌐 Infinite Procedural Exploration:** Uses Fractal Brownian Motion (FBM) with 4 octaves to ensure natural terrain across infinite coordinates.
+* **🌐 Infinite Procedural Exploration:** Uses **Fractal Brownian Motion (FBM)** with 4 octaves to ensure natural terrain across infinite coordinates.
 * **🏘️ Heat-Sync Settlements:** Features an intelligent spawning system for **Furnace Cities**, **Coal Mines**, and **Survivor Camps** based on local thermal data.
 * **⚓ Contextual Coastal Logic:** Port cities and Icebreaker Docks only spawn on "Ice Shelf" tiles that are adjacent to "Frozen Ocean".
 * **📋 The Survivor's Log:** A built-in coordinate-based ledger that allows players to "tag" locations with notes on resources, threats, or supply caches.
 * **💾 Persistent Save System:** Integrated `localStorage` support. Your coordinates ($X, Y$), current world seed, and all ledger notes are automatically saved and reloaded upon return.
 * **📋 Centralized Log Reviewer:** A new centralized log interface allows you to view all notes made across the infinite map in one chronological list, making it easier to track discovered resources.
-* **🔑 Custom Seed Injection:** Players can now manually input and "Load" specific world seeds, allowing for shared world exploration and speed-running.
+* **🔑 Custom Seed Injection:** Players can now manually input and **"Load"** specific world seeds, allowing for shared world exploration and speed-running.
 * **⚙️ Unified System Menu:** A clean modal-based UI replaces the old action bar, housing world-reset, trekking, and log-management tools.
 * **💯 Zero-Dependency Architecture:** One single HTML file containing all Logic (JS), Styling (CSS), and Structure (HTML).
 
